@@ -3,6 +3,7 @@ import { CURRENCY_TYPES } from '../Constants';
 import Select from '../components/Select';
 import Input from '../components/Input';
 import {get} from '../apis/apiHelper';
+import {Container, Row, Col} from 'reactstrap';
 
 class Form extends Component {
   constructor(props){
@@ -69,13 +70,23 @@ class Form extends Component {
 
   render(){
     return(
-        <div className='row col-3'>
-          <Select options={CURRENCY_TYPES} handleOnChange={this.handleSelectInputChange} value={this.state.fromCurrency}/>
-          <Input inputType="number" value={this.state.inputValue} handleOnChange={this.handleOnInputChange}/>
-          <p>To</p>
-          <Select options={CURRENCY_TYPES} handleOnChange={this.handleSelectOutputChange} value={this.state.toCurrency}/>
-          <Input inputType="number" value={this.state.outputValue} handleOnChange={this.handleOnOutputChange}/>
-        </div>
+        <Container>
+          <Row className='mt-3'>
+            <Col md={2}>
+              <Select options={CURRENCY_TYPES} handleOnChange={this.handleSelectInputChange} value={this.state.fromCurrency}/>
+            </Col>
+            <Col md={2}>
+              <Input inputType="number" value={this.state.inputValue} handleOnChange={this.handleOnInputChange}/>
+            </Col>
+            <p>To</p>
+            <Col md={2}>
+              <Select options={CURRENCY_TYPES} handleOnChange={this.handleSelectOutputChange} value={this.state.toCurrency}/>
+            </Col>
+            <Col md={2}>
+              <Input inputType="number" value={this.state.outputValue} handleOnChange={this.handleOnOutputChange}/>
+            </Col>
+          </Row>
+        </Container>
         )
   }
 }
